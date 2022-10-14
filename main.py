@@ -31,10 +31,22 @@ def get_count():
   return delta.days
 
 def get_birthday():
-  next = datetime.strptime(str(date.today().year) + "-" + birthday_man, "%Y-%m-%d")
-  if next < datetime.now():
-    next = next.replace(year=next.year + 1)
-  return (next - today).days
+#   next = datetime.strptime(str(date.today().year) + "-" + birthday_man, "%Y-%m-%d")
+#   if next < datetime.now():
+#     next = next.replace(year=next.year + 1)
+#   return (next - today).days
+  next = str(date.today().year) + "-" + birthday
+  
+  splits = re.split(r'[-.s+/]', next)  
+  splits = [s for s in splits if s]
+  if len(splits) < 3:
+    raise ValueError('输入格式不正确， 至少包括年月日')
+     
+  splits = splits[:3]  # 只截取年月日
+  birthday1 = datetime.strptime('-'.join(splits), '%Y-%m-%d')
+  tod = date.today()
+  delta = birthday1.date() - tod
+  return delta.days
 
 def get_birthday_man():
 #   next = datetime.strptime(str(date.today().year) + "-" + birthday_man, "%Y-%m-%d")
