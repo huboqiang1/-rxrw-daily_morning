@@ -33,13 +33,13 @@ def get_birthday():
   next = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
   if next < datetime.now():
     next = next.replace(year=next.year + 1)
-  return (next.days - today.days).days
+  return (next.day - today.day).days
 
 def get_birthday_man():
   next = datetime.strptime(str(date.today().year) + "-" + birthday_man, "%Y-%m-%d")
   if next < datetime.now():
     next = next.replace(year=next.year + 1)
-  return (next.days - today.days).days
+  return (next.day - today.day).days
 
 def get_words():
   words = requests.get("https://api.shadiao.pro/chp")
