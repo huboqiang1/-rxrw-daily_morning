@@ -31,7 +31,17 @@ def get_count():
   return delta.days
 
 def get_birthday():
-  next = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
+  next = datetime.strptime(str(date.today().year) + "-" + birthday_man, "%Y-%m-%d")
+  if next < datetime.now():
+    next = next.replace(year=next.year + 1)
+  return (next.day - today.day).days
+
+def get_birthday_man():
+#   next = datetime.strptime(str(date.today().year) + "-" + birthday_man, "%Y-%m-%d")
+#   if next < datetime.now():
+#     next = next.replace(year=next.year + 1)
+#   return (next.day - today.day).days
+  next = datetime.strptime(str(date.today().year) + "-" + birthday_man, "%Y-%m-%d")
   
   splits = re.split(r'[-.s+/]', next)  
   splits = [s for s in splits if s]
@@ -43,12 +53,6 @@ def get_birthday():
   tod = date.today()
   delta = birthday1.date() - tod
   return delta.day
-
-def get_birthday_man():
-  next = datetime.strptime(str(date.today().year) + "-" + birthday_man, "%Y-%m-%d")
-  if next < datetime.now():
-    next = next.replace(year=next.year + 1)
-  return (next.day - today.day).days
 
 def get_words():
   words = requests.get("https://api.shadiao.pro/chp")
