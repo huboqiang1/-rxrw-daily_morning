@@ -38,15 +38,10 @@ def get_birthday():
     raise ValueError('输入格式不正确， 至少包括年月日')
      
   splits = splits[:3]  # 只截取年月日
-  birthday = datetime.strptime('-'.join(splits), '%Y-%m-%d')
+  birthday1 = datetime.strptime('-'.join(splits), '%Y-%m-%d')
   tod = date.today()
-  delta = birthday.date() - tod
+  delta = birthday1.date() - tod
   return delta.day
-  
-  
-#   if next < datetime.now():
-#     next = next.replace(year=next.year + 1)
-#   return (next.day - today.day).days
 
 def get_birthday_man():
   next = datetime.strptime(str(date.today().year) + "-" + birthday_man, "%Y-%m-%d")
