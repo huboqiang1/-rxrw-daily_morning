@@ -52,7 +52,7 @@ def get_birthday_man():
   birthday1 = datetime.strptime('-'.join(splits), '%Y-%m-%d')
   tod = date.today()
   delta = birthday1.date() - tod
-  return delta.day
+  return delta.days
 
 def get_words():
   words = requests.get("https://api.shadiao.pro/chp")
