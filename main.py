@@ -31,9 +31,22 @@ def get_count():
 
 def get_birthday():
   next = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
-  if next < datetime.now():
-    next = next.replace(year=next.year + 1)
-  return (next.day - today.day).days
+  
+  splits = re.split(r'[-.s+/]', next)  
+  splits = [s for s in splits if s]
+  if len(splits) < 3:
+    raise ValueError('输入格式不正确， 至少包括年月日')
+     
+  splits = splits[:3]  # 只截取年月日
+  birthday = datetime.strptime('-'.join(splits), '%Y-%m-%d')
+  tod = date.today()
+  delta = birthday.date() - tod
+  return delta.day
+  
+  
+#   if next < datetime.now():
+#     next = next.replace(year=next.year + 1)
+#   return (next.day - today.day).days
 
 def get_birthday_man():
   next = datetime.strptime(str(date.today().year) + "-" + birthday_man, "%Y-%m-%d")
