@@ -49,11 +49,11 @@ def get_birthday():
   return delta.days
 
 def get_birthday_man():
-#   next = datetime.strptime(str(date.today().year) + "-" + birthday_man, "%Y-%m-%d")
-#   if next < datetime.now():
-#     next = next.replace(year=next.year + 1)
+  next = datetime.strptime(str(date.today().year) + "-" + birthday_man, "%Y-%m-%d")
+  if next < datetime.now():
+    next = next.replace(year=next.year + 1)
 #   return (next.day - today.day).days
-  next = str(date.today().year) + "-" + birthday_man
+  next = str(next.year) + "-" + birthday_man
   
   splits = re.split(r'[-.s+/]', next)  
   splits = [s for s in splits if s]
