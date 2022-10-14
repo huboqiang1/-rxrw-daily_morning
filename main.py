@@ -41,7 +41,7 @@ def get_birthday_man():
 #   if next < datetime.now():
 #     next = next.replace(year=next.year + 1)
 #   return (next.day - today.day).days
-  next = datetime.strptime(str(date.today().year) + "-" + birthday_man, "%Y-%m-%d")
+  next = str(date.today().year + "-" + birthday_man)
   
   splits = re.split(r'[-.s+/]', next)  
   splits = [s for s in splits if s]
