@@ -36,7 +36,8 @@ def get_together():
   return delta.days
 
 def get_weekday():
-  return today.isoweekday()
+  week_list = ["星期一","星期二","星期三","星期四","星期五","星期六","星期日"]
+  return week_list[today.weekday()]
 
 def get_birthday():
 #   next = datetime.strptime(str(date.today().year) + "-" + birthday_man, "%Y-%m-%d")
