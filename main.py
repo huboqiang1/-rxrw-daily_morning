@@ -9,6 +9,7 @@ import re
 
 today = datetime.now()
 start_date = os.environ['START_DATE']
+together_date = os.environ['TOGETHER_DATE']
 city = os.environ['CITY']
 birthday = os.environ['BIRTHDAY']
 birthday_man = os.environ['BIRTHDAY_MAN']
@@ -29,6 +30,13 @@ def get_weather():
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
   return delta.days
+
+def get_together():
+  delta = today - datetime.strptime(together_date, "%Y-%m-%d")
+  return delta.days
+
+def get_weekday():
+  return today.isoweekday()
 
 def get_birthday():
 #   next = datetime.strptime(str(date.today().year) + "-" + birthday_man, "%Y-%m-%d")
@@ -83,6 +91,6 @@ client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature = get_weather()
-data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"birthday_right":{"value":get_birthday_man()},"words":{"value":get_words(), "color":get_random_color()}}
+data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"together_days":{"value":get_together()},"birthday_left":{"value":get_birthday()},"birthday_right":{"value":get_birthday_man()},"words":{"value":get_words(), "color":get_random_color()}, "isWeekDay":{"value":get_weekday()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
