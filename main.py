@@ -13,6 +13,7 @@ together_date = os.environ['TOGETHER_DATE']
 city = os.environ['CITY']
 birthday = os.environ['BIRTHDAY']
 birthday_man = os.environ['BIRTHDAY_MAN']
+betrothal = os.environ['BETROTHAL']
 
 app_id = os.environ["APP_ID"]
 app_secret = os.environ["APP_SECRET"]
@@ -59,6 +60,23 @@ def get_birthday():
   birthday1 = datetime.strptime('-'.join(splits), '%Y-%m-%d')
   tod = date.today()
   delta = birthday1.date() - tod
+  return delta.days
+
+def get_betrothal():
+  next = datetime.strptime(str(date.today().year) + "-" + betrothal, "%Y-%m-%d")
+  if next < datetime.now():
+    next = next.replace(year=next.year + 1)
+  next = str(next.year) + "-" + betrothal
+  
+  splits = re.split(r'[-.s+/]', next)  
+  splits = [s for s in splits if s]
+  if len(splits) < 3:
+    raise ValueError('输入格式不正确， 至少包括年月日')
+     
+  splits = splits[:3]  # 只截取年月日
+  betrothal1 = datetime.strptime('-'.join(splits), '%Y-%m-%d')
+  tod = date.today()
+  delta = betrothal1.date() - tod
   return delta.days
 
 def get_birthday_man():
