@@ -31,7 +31,7 @@ def get_weather():
   print(res)
   print(res['data'])
   print(res['data']['tq'])
-  print(res['data']['qw']))
+  print(res['data']['qw'])
   weather = res['data']['tq']
   return weather['weather'], int(res['data']['qw'])
 
