@@ -28,8 +28,10 @@ def get_weather():
   res = requests.get(url).json()
   print(res)
   data = json.load(res)
-  print(data, type(data))
   weather = res['data']['tq']
+  print(weather)
+  print(res['data']['qw'])
+  print(int(res['data']['qw']))
   return weather['weather'], int(res['data']['qw'])
 
 def get_count():
