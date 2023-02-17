@@ -31,8 +31,7 @@ def get_weather():
   print(res['data'])
   print(res['data']['tq'])
   print(res['data']['qw'])
-  weather = res['data']['tq']
-  return weather['weather'], math.floor(res['data']['qw'])
+  return res['data']['tq'], res['data']['qw']
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
