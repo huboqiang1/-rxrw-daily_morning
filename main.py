@@ -26,8 +26,9 @@ template_id = os.environ["TEMPLATE_ID"]
 def get_weather():
   url = "http://api.yytianqi.com/observe?city=CH190101&key=9lvtgv9cv3kpd46p"
   res = requests.get(url).json()
+  print(res)
   weather = res['data']['tq']
-  return weather['weather'], math.floor(int(res['data']['qw']))
+  return weather['weather'], res['data']['qw']
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
