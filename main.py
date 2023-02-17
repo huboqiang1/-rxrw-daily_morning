@@ -25,7 +25,7 @@ template_id = os.environ["TEMPLATE_ID"]
 
 def get_weather():
   url = "http://api.yytianqi.com/observe?city=CH190101&key=9lvtgv9cv3kpd46p"
-  res = requests.get(url).json()
+  res = requests.get(url)
   print(res)
   weather = res['data']['tq']
   print(weather)
