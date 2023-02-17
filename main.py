@@ -26,15 +26,13 @@ template_id = os.environ["TEMPLATE_ID"]
 
 def get_weather():
   url = "http://api.yytianqi.com/observe?city=CH190101&key=9lvtgv9cv3kpd46p"
-  res = requests.get(url)
+  res = requests.get(url).json
   print(type(res))
   print(res)
+  print(res['data'])
+  print(res['data'['tq']])
+  print(res['data']['qw']))
   weather = res['data']['tq']
-  print(data)
-  print(type(data))
-  print(weather)
-  print(res['data']['qw'])
-  print(int(res['data']['qw']))
   return weather['weather'], int(res['data']['qw'])
 
 def get_count():
