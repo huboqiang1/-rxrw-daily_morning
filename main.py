@@ -6,6 +6,7 @@ import requests
 import os
 import random
 import re
+import json
 
 today = datetime.now()
 start_date = os.environ['START_DATE']
@@ -25,9 +26,12 @@ template_id = os.environ["TEMPLATE_ID"]
 
 def get_weather():
   url = "http://api.yytianqi.com/observe?city=CH190101&key=9lvtgv9cv3kpd46p"
-  res = requests.get(url)
+  res = requests.get(url).json()
   print(res)
+  data = json.load(res)
   weather = res['data']['tq']
+  print(data)
+  print(type(data))
   print(weather)
   print(res['data']['qw'])
   print(int(res['data']['qw']))
