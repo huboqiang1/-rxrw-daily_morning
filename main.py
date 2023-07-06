@@ -83,6 +83,11 @@ def get_betrothal():
   delta = betrothal1.date() - tod
   return delta.days
 
+def get_words():
+  words = requests.get("https://api.shadiao.pro/chp")
+  print(words.json()['data']['text'])
+  return words.json()['data']['text']
+
 def get_birthday_man():
   next = datetime.strptime(str(date.today().year) + "-" + birthday_man, "%Y-%m-%d")
   if next < datetime.now():
@@ -101,10 +106,6 @@ def get_birthday_man():
   delta = birthday1.date() - tod
   return delta.days
 
-def get_words():
-  words = requests.get("https://api.shadiao.pro/chp")
-  print(words.json()['data']['text'])
-  return words.json()['data']['text']
 
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
