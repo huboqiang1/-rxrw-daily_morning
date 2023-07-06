@@ -84,9 +84,9 @@ def get_betrothal():
   return delta.days
 
 def get_word_data():
-  words = requests.get("https://api.shadiao.pro/chp")
-  print(words.json()['data']['text'])
-  return words.json()['data']['text']
+  res = requests.get("https://api.shadiao.pro/chp")
+  print(res.json()['data']['text'])
+  return res.json()['data']['text']
 
 def get_birthday_man():
   next = datetime.strptime(str(date.today().year) + "-" + birthday_man, "%Y-%m-%d")
