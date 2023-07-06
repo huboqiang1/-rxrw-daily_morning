@@ -103,6 +103,7 @@ def get_birthday_man():
 
 def get_words():
   words = requests.get("https://api.shadiao.pro/chp")
+  print(words.json()['data']['text'])
   return words.json()['data']['text']
 
 def get_random_color():
